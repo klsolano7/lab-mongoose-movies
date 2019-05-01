@@ -30,12 +30,14 @@ router.get('/new', (req,res,next) => {
     res.render('celeb/new')
 });
 
-router.post('/celebrities', (req, res, next) =>{
+router.post('/new', (req, res, next) =>{
+  console.log("celebs post route for new celeb ========= ", req.body);
   const {name, occupation, catchphrase} = req.body;
-  const newCeleb = new Celebrity({ name, occupation, catchphrase})
+  const newCeleb = new Celeb({ name, occupation, catchphrase})
   newCeleb.save()
   .then((data) =>{
-    res.redirect('/celebrity/new')
+    console.log("info after saving celeb ----------", data);
+    res.redirect('/celebrities/new')
   })
 })
 
