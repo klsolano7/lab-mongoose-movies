@@ -41,6 +41,10 @@ router.post('/new', (req, res, next) =>{
   })
 })
 
-
+router.post('/:id/delete', (req, res, next)=>{
+  Celeb.findByIdAndDelete(req.params.id).then(deleted => {
+    res.redirect('/celebrities');
+  }).catch(err => {res.json(err)})
+})
 
 module.exports = router;
